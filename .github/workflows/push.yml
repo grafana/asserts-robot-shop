@@ -10,10 +10,15 @@ on:
       - 'OpenShift/**'
       - 'Swarm/**'
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: 'false'
       - name: Build the stack
         run: docker-compose build
